@@ -25,9 +25,11 @@ export const GET = async(
         try{
             // 복사한 스키마 넣어주기.  limit 10 데이터 10개만 offset 10 데이터 10개를 뛰어넘은것 그러니까 2page 20하면 3페이지 이런식임. order by payment_date
             // 쿼리를 넣을때 변수를 넣을 수 있음 문법이 있음 물음표를 넣으면 됨 mysql2에서 쓰는 문법배열 값을 넣어주면 차례대로 들어감
-            const [results] = await db.query<RowDataPacket[]>('SELECT * FROM sakila.payment order by payment_date limit ? offset ?' , [perPage, offset]);
+
+            // sakila.payment DESC 최신순(오름차순)
+            const [results] = await db.query<RowDataPacket[]>('SELECT * FROM new_schema.board order by date DESC limit ? offset ?' , [perPage, offset]);
             // count함수 있음
-            const [countResult] = await db.query<RowDataPacket[]>('SELECT count(*) as cnt from sakila.payment');
+            const [countResult] = await db.query<RowDataPacket[]>('SELECT count(*) as cnt from new_schema.board');
             //데이터의 총 개수 
             const totalCnt = countResult[0].cnt;
             console.log(results)

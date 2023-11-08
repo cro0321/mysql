@@ -33,19 +33,21 @@ export default function Write() {
             if(res.ok){
                 const data = await res.json();
                 console.log(data.message);
+                // alert('정상적으로 등록 하였습니다.');
+                window.location.href = '/'
             }else{
                 const errorData = await res.json();
                 console.log(errorData.error);
             } 
            }catch(error){
-            console.log(error)
+            console.log(error);
            }
      
 }
 
     return (
        <>
-         <form method="post">
+         <form method="post" onSubmit={submitEvent}>
             <input type="text" name = "name" defaultValue={formData.name} onChange={changeEvent} className="shadow text-gray-700 text-sm mb-2 border"/>
             <input type="text" name = "title" defaultValue={formData.title} onChange={changeEvent}  className="shadow text-gray-700 text-sm mb-2 border"/>
             <textarea name="content" defaultValue={formData.content} onChange={changeEvent}  className="shadow text-gray-700 text-sm mb-2 border "></textarea>
