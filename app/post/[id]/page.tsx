@@ -67,18 +67,20 @@ export default function Detail() {
                 (
                     <>
 
-                        <div className="mx-auto px-4 py-5 mt-28">
+                        <div className="w-2/3 mx-auto px-4 py-5 mt-28">
                             <div className="shadow-md rounded px-8 pt-6 pb-8 mb-4">
-                                <div className="font-bold text-xl mb-2">{post && post[0]?.title}</div>
-                                <p className="text-gray-700 text-base">{post && post[0]?.content}</p>
+                                <div className="font-bold text-xl mb-2">제목 : {post && post[0]?.title}</div>
+                                <p className="text-gray-700 text-base">내용 : {post && post[0]?.content}</p>
+                        <div className="mt-14 text-right">
+                        <button className="bg-blue-500 text-white px-4 py-2 mr-5 rounded shadow-md hover:bg-slate-600 focus:outline-none ">수정</button>
+                        <button className="bg-red-500 text-white px-4 py-2 rounded shadow-md hover:bg-slate-600 focus:outline-none" onClick={() => { deletePost(post[0].id) }}>삭제</button>
+                        </div>
                             </div>
                         </div>
 
                     </>
                 )
             }
-            <button className="bg-blue-500 text-white px-4 py-2 rounded shadow-md hover:bg-slate-600 focus:outline-none">수정</button>
-            <button className="bg-red-500 text-white px-4 py-2 rounded shadow-md hover:bg-slate-600 focus:outline-none" onClick={() => { deletePost(post[0].id) }}>삭제</button>
 
 
         </>
